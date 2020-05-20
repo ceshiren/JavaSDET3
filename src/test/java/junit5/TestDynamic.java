@@ -39,7 +39,9 @@ class DynamicTestsDemo {
     @TestFactory
     Collection<DynamicTest> dynamicTestsFromCollection() {
         return Arrays.asList(
-                dynamicTest("1st dynamic test", () -> assertTrue(isPalindrome("madam"))),
+                dynamicTest("1st dynamic test", () -> {
+                    assertTrue(isPalindrome("madam"));
+                }),
                 dynamicTest("2nd dynamic test", () -> assertEquals(4, 4))
         );
     }
