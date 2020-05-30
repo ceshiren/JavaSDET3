@@ -32,6 +32,7 @@ public class BasePage {
 
 
     public void click(By by){
+        //todo: 异常处理
         wait.until(ExpectedConditions.elementToBeClickable(by));
         driver.findElement(by).click();
     }
@@ -39,5 +40,10 @@ public class BasePage {
     public void sendKeys(By by, String content){
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         driver.findElement(by).sendKeys(content);
+    }
+
+    public void upload(By by, String path){
+        wait.until(ExpectedConditions.presenceOfElementLocated(by));
+        driver.findElement(by).sendKeys(path);
     }
 }
