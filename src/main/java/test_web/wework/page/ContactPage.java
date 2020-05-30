@@ -7,14 +7,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ContactPage {
+public class ContactPage extends BasePage {
     By addMember=By.linkText("添加成员");
     By username=By.name("username");
     By delete=By.linkText("删除");
-    RemoteWebDriver driver;
 
     public ContactPage(RemoteWebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public ContactPage addMember(String username, String acctid, String mobile) {
@@ -33,27 +32,35 @@ public class ContactPage {
 
 
         while(driver.findElements(this.username).size()==0){
-            driver.findElement(addMember).click();
+            click(addMember);
         }
 
-        driver.findElement(this.username).sendKeys(username);
-        driver.findElement(By.name("acctid")).sendKeys(acctid);
-        driver.findElement(By.name("mobile")).sendKeys(mobile);
-        driver.findElement(By.cssSelector(".js_btn_save")).click();
+//        driver.findElement(this.username).sendKeys(username);
+//        driver.findElement(By.name("acctid")).sendKeys(acctid);
+//        driver.findElement(By.name("mobile")).sendKeys(mobile);
+//        driver.findElement(By.cssSelector(".js_btn_save")).click();
+        sendKeys(this.username, username);
+        sendKeys(By.name("acctid"), acctid);
+        sendKeys(By.name("mobile"), mobile);
+        click(By.cssSelector(".js_btn_save"));
         return this;
     }
 
     public ContactPage search(String keyword){
-        driver.findElement(By.id("memberSearchInput")).sendKeys(keyword);
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(delete));
+        sendKeys(By.id("memberSearchInput"), keyword);
+//        driver.findElement(By.id("memberSearchInput")).sendKeys(keyword);
+//        new WebDriverWait(driver, Duration.ofSeconds(10))
+//                .until(ExpectedConditions.elementToBeClickable(delete));
         return this;
     }
 
     public ContactPage delete(){
-        driver.findElement(delete).click();
-        driver.findElement(By.linkText("确认")).click();
-        driver.findElement(By.id("clearMemberSearchInput")).click();
+        click(delete);
+        click(By.linkText("确认"));
+        click(By.id("clearMemberSearchInput"));
+//        driver.findElement(delete).click();
+//        driver.findElement(By.linkText("确认")).click();
+//        driver.findElement(By.id("clearMemberSearchInput")).click();
         return this;
 
     }

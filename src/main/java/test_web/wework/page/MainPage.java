@@ -7,17 +7,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class MainPage {
-
-    RemoteWebDriver driver;
+public class MainPage extends BasePage{
 
     public MainPage() {
+        super();
 //        System.setProperty("webdriver.gecko.driver", "/Users/seveniruby/ke/java_3/selenium/drivers/geckodriver");
 
         String url = "https://work.weixin.qq.com/wework_admin/frame";
 //        FirefoxDriver driver=new FirefoxDriver();
-        driver=new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(url);
         driver.manage().deleteAllCookies();
 
@@ -68,11 +65,9 @@ public class MainPage {
 
     public ContactPage toContact() {
         //todo:
-        driver.findElement(By.cssSelector("#menu_contacts")).click();
+        click(By.cssSelector("#menu_contacts"));
+//        driver.findElement(By.cssSelector("#menu_contacts")).click();
         return new ContactPage(driver);
     }
 
-    public void quit() {
-        driver.quit();
-    }
 }
