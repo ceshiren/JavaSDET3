@@ -3,12 +3,13 @@ package test_web.wework.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class MainPage {
 
-    public static ChromeDriver driver= null;
+    RemoteWebDriver driver;
 
     public MainPage() {
 //        System.setProperty("webdriver.gecko.driver", "/Users/seveniruby/ke/java_3/selenium/drivers/geckodriver");
@@ -22,6 +23,7 @@ public class MainPage {
 
         //todo: 改成从文件读取
 
+        //todo: 使用自己的cookie，别使用老师的
         driver.manage().addCookie(new Cookie("pgv_pvid", "7369917120"));
         driver.manage().addCookie(new Cookie("pgv_pvi", "3082740736"));
         driver.manage().addCookie(new Cookie("RK", "LYi80hm44v"));
@@ -67,6 +69,10 @@ public class MainPage {
     public ContactPage toContact() {
         //todo:
         driver.findElement(By.cssSelector("#menu_contacts")).click();
-        return new ContactPage();
+        return new ContactPage(driver);
+    }
+
+    public void quit() {
+        driver.quit();
     }
 }
