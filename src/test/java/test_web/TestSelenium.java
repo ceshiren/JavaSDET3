@@ -1,4 +1,4 @@
-package junit5;
+package test_web;
 
 
 import org.junit.jupiter.api.Test;
