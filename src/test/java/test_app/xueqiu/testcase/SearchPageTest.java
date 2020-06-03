@@ -7,13 +7,15 @@ import org.junit.jupiter.params.provider.CsvSource;
 import test_app.xueqiu.page.MainPage;
 import test_app.xueqiu.page.SearchPage;
 
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchPageTest {
     static MainPage mainPage;
     static SearchPage searchPage;
     @BeforeAll
-    static void beforeAll(){
+    static void beforeAll() throws MalformedURLException {
         searchPage=new MainPage().toSearch();
 
 
