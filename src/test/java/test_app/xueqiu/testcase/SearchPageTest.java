@@ -1,5 +1,6 @@
 package test_app.xueqiu.testcase;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,8 +18,11 @@ class SearchPageTest {
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
         searchPage=new MainPage().toSearch();
+    }
 
-
+    @AfterAll
+    static void afterAll(){
+        searchPage.quit();
     }
 
     @ParameterizedTest
@@ -35,6 +39,5 @@ class SearchPageTest {
     @Test
     void getPrice() {
         assertTrue(searchPage.search("alibaba").getPrice() > 200);
-
     }
 }
