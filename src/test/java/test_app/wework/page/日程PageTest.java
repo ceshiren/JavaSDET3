@@ -12,10 +12,11 @@ class 日程PageTest {
     private static Wework wework;
 
     @BeforeAll
-    static void beforeAll(){
+    static void beforeAll() {
         wework = new Wework();
 
     }
+
     @BeforeEach
     void setUp() {
     }
@@ -26,7 +27,12 @@ class 日程PageTest {
 
     @Test
     void 添加() {
-        assertTrue(wework.日程().添加("上班打卡", null).获取日程(null).contains("上班打卡"));
+        assertTrue(
+                wework.日程()
+                        .添加("上班打卡", null)
+                        .获取日程(null)
+                        .contains("上班打卡")
+        );
     }
 
     @Test
