@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class 日程Page extends BasePage{
     //todo:多版本app、多平台的app 定位符通常有差别
-    private final By taskName = By.id("b2k");
+    private final By taskName = By.id("b0e");
     private final By save = byText("保存");
     private final By taskList = By.id("gg_");
-    private By add =By.id("gym");
+    private By add =By.id("gq0");
 
     public 日程Page(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -29,6 +29,9 @@ public class 日程Page extends BasePage{
         if(day!=null){
             //todo:选择日期
         }
-        return driver.findElements(taskList).stream().map(x->x.getText()).collect(Collectors.toList());
+        return driver.findElements(taskList)
+                .stream()
+                .map(x->x.getText())
+                .collect(Collectors.toList());
     }
 }
