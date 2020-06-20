@@ -2,12 +2,8 @@ package test_web.wework.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.util.concurrent.TimeUnit;
-
-public class MainPage extends BasePage{
+public class MainPage extends WebBasePage {
 
     public MainPage() {
         super();

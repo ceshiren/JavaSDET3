@@ -2,7 +2,7 @@ package test_app.wework.page;
 
 import org.openqa.selenium.By;
 
-public class Wework extends BasePage{
+public class Wework extends AppBasePage {
     public Wework() {
         super("com.tencent.wework", ".launch.LaunchSplashActivity");
     }

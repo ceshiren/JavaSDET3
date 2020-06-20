@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class 日程Page extends BasePage{
+public class 日程Page extends AppBasePage {
     //todo:多版本app、多平台的app 定位符通常有差别
     private final By taskName = By.id("b0e");
     private final By save = byText("保存");
