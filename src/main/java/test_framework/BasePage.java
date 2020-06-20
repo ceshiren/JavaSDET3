@@ -9,15 +9,22 @@ import java.util.HashMap;
 //自动化领域建模
 public class BasePage {
     public void click(HashMap<String, Object> map) {
+        System.out.println("click");
         System.out.println(map);
 //        driver.findElement(by).click
     }
 
-    public void find() {
-
+    public void sendKeys(HashMap<String, Object> map){
+        System.out.println("sendKeys");
+        System.out.println(map);
     }
 
-    public void send() {
+    public void action(HashMap<String, Object> map){
+        System.out.println("action");
+        System.out.println(map);
+    }
+
+    public void find() {
 
     }
 
@@ -27,9 +34,23 @@ public class BasePage {
 
     public void run(UIAuto uiAuto) {
         uiAuto.steps.stream().forEach(m -> {
-            if (m.keySet().contains("click")) {
-                click((HashMap<String, Object>) m.get("click"));
+//            if (m.keySet().contains("click")) {
+//                click((HashMap<String, Object>) m.get("click"));
+//            }
+
+            if(m.containsKey("click")){
+                HashMap<String, Object> by= (HashMap<String, Object>) m.get("click");
+                click(by);
             }
+
+            if(m.containsKey("sendKeys")){
+                sendKeys(m);
+            }
+
+            if(m.containsKey("action")){
+                action(m);
+            }
+
         });
 
     }
