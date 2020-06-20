@@ -3,4 +3,4 @@
 
 ## 霍格沃兹测试学院
 - https://ceshiren.com
-- testerh.ke.qq.com
+- https://testerh.ke.qq.com

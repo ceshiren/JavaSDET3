@@ -47,6 +47,5 @@ public class WebTest {
             all.add(arguments(uiAuto, path));
         });
         return all;
-
     }
 }
