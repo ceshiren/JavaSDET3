@@ -33,6 +33,14 @@ class BasePageTest {
     }
 
     @Test
+    void runPOM(){
+        basePage.loadPages("src/main/resources/test_framework");
+        UIAuto uiauto=basePage.load("/test_framework/webauto_3.yaml");
+        basePage.run(uiauto);
+
+    }
+
+    @Test
     void load() throws JsonProcessingException {
         UIAuto uiauto=basePage.load("/test_framework/uiauto.yaml");
         ObjectMapper mapper=new ObjectMapper();

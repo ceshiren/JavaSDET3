@@ -1,0 +1,31 @@
+name: xxx
+description: xxx
+steps:
+  #  #  基本自动化领域模型
+  #  #  业务模型
+  #  #通用方法
+  #  - method: click
+  #    params: [1, 2]
+  #  #    通用方法加参数
+  #  - method: click
+  #    params:
+  #      by: id
+  #      value: search
+  #  #简化格式
+  #  - by: uai expr
+  #    value: search
+  #    action: click
+  #    #进一步简化，如果by只是单个简单的字符串，可以进一步简化
+  #  - id: search
+  #    action: click
+  #  - id: search
+  #    action: sendKeys
+  #    text: "seveniruby hogwarts"
+  - page: main
+    action: init
+
+  - page: main
+    action: visit
+
+  - page: contact
+  - action: search

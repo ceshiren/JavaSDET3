@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class WebTest {
+public class DDTest {
 
     private static BasePage basePage;
 
@@ -34,13 +34,11 @@ public class WebTest {
 
     static List<Arguments> classic(){
         basePage = UIAutoFactory.create("web");
-        basePage.loadPages("src/main/resources/test_framework");
         List<Arguments> all= new ArrayList<Arguments>();
 
         Arrays.asList(
-//                "/test_framework/webauto_1.yaml",
-//                "/test_framework/webauto_2.yaml",
-                "/test_framework/webauto_3.yaml"
+                "/test_framework/webauto_1.yaml",
+                "/test_framework/webauto_2.yaml"
         ).stream().forEach(path->{
             UIAuto uiAuto= basePage.load(path);
             uiAuto.description=path;

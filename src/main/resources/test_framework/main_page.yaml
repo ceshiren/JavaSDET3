@@ -1,0 +1,9 @@
+name: main
+methods:
+  init:
+    - action: get
+      url: https://ceshiren.com
+
+  visit:
+    - click: {linktext: 开源项目}
+    - click: {linktext: 测试内推}
