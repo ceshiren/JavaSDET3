@@ -24,7 +24,9 @@ public class WebViewTest {
         desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
         desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
         desiredCapabilities.setCapability("noReset", "true");
-//        desiredCapabilities.setCapability("dontStopAppOnReset", "true");
+//        desiredCapabilities.setCapability("adbPort", "5038");
+//        desiredCapabilities.setCapability("skipLogcatCapture", "true");
+        desiredCapabilities.setCapability("dontStopAppOnReset", "true");
 
         desiredCapabilities.setCapability("chromedriverExecutable", "/Users/seveniruby/projects/chromedriver/72/chromedriver");
 
@@ -68,6 +70,11 @@ public class WebViewTest {
 
         driver.findElement(By.cssSelector(".trade_home_info_3aI")).click();
 
+    }
+
+    @Test
+    public void wxmicroApplication(){
+        
     }
 
     @Test
