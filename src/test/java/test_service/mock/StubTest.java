@@ -19,7 +19,7 @@ public class StubTest {
     @BeforeAll
     static void beforeAll() {
         //No-args constructor will start on port 8080, no HTTPS
-        wireMockServer = new WireMockServer(wireMockConfig().port(8089));
+        wireMockServer = new WireMockServer(wireMockConfig().port(8089).extensions(ExampleTransformer.class));
         wireMockServer.start();
         configureFor("localhost", 8089);
 
@@ -72,7 +72,7 @@ public class StubTest {
 
 
     @Test
-    void mockOnProxy() throws InterruptedException, IOException {
+    void mockOnProxyLocal() throws InterruptedException, IOException {
         stubFor(
                 get(urlMatching(".*"))
                         .atPriority(10)
@@ -80,8 +80,23 @@ public class StubTest {
 
         stubFor(
                 get(urlMatching("/categories_and_latest"))
-                .atPriority(1) //"/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"
-                .willReturn(aResponse().withBody(Files.readAllBytes(Paths.get("/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"))))
+                        .atPriority(1) //"/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"
+                        .willReturn(aResponse().withBody(Files.readAllBytes(Paths.get("/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"))))
+        );
+        Thread.sleep(100000);
+    }
+
+    @Test
+    void mockOnProxy() throws InterruptedException, IOException {
+        stubFor(
+                get(urlMatching(".*"))
+                        .atPriority(10)
+                        .willReturn(aResponse().proxiedFrom("https://ceshiren.com").withTransformers("ExampleTransformer")));
+
+        stubFor(
+                get(urlMatching("/categories_and_latest"))
+                        .atPriority(1) //"/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"
+                        .willReturn(aResponse().withBody(Files.readAllBytes(Paths.get("/Users/seveniruby/projects/Java3/src/main/resources/mock_local.json"))))
         );
         Thread.sleep(100000);
     }
