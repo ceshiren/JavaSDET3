@@ -13,6 +13,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -131,7 +132,7 @@ public class WeiXinTest {
 
         //native原生输入可以
         driver.context("NATIVE_APP");
-        driver.getKeyboard().sendKeys("jd");
+        new Actions(driver).sendKeys("xiaomi").perform();
         screenshot();
         driver.context("WEBVIEW_xweb");
         driver.findElement(By.cssSelector(".stock__item")).click();
