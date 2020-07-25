@@ -1,0 +1,9 @@
+name: wework
+methods:
+  get_token:
+    method: get
+    url: https://qyapi.weixin.qq.com/cgi-bin/gettoken
+    query:
+      corpid: ID
+      corpsecret: SECRET
+    save: access_token

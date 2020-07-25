@@ -1,0 +1,19 @@
+#ApiObjectModel
+name: tags
+methods:
+
+  list:
+    #ApiObjectMethodModel
+    get: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get_corp_tag_list
+    query:
+      access_token: token
+    json:
+      tag_id: []
+
+
+  add:
+    #ApiObjectMethodModel
+    post: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/add_corp_tag
+    query:
+      access_token: token
+
