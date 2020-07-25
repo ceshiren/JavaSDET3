@@ -1,0 +1,10 @@
+#ApiTestCaseModel
+name: add2
+description: dddxxx
+steps:
+  - api: wework
+    action: get_token
+  - api: wework
+    action: get_token
+    params:
+      tagid: [1,2,3]

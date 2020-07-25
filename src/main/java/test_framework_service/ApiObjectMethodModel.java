@@ -23,14 +23,20 @@ public class ApiObjectMethodModel {
      * @return
      */
     public Response run() {
+        //多环境支持
+        String url="";
+
+
         if(post!=null){
-            return given().log().all().queryParams(query).post(post)
-                    .then().log().all().extract().response();
+            url=post;
+            method="post";
         }
         if(get!=null){
-            return given().log().all().queryParams(query).get(get)
-                    .then().log().all().extract().response();
+            url=get;
+            method="get";
         }
+        //读取配置文件，获得域名与ip对应关系，在此替换
+        url=url.replaceAll("domain", "ip");
 
         return given().log().all().queryParams(query).request(method, url)
                 .then().log().all().extract().response();

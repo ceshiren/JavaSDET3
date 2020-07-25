@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 
 /**
  * 代表的是测试用例，提供读取测试用例、执行功能
@@ -39,6 +43,13 @@ public class ApiTestCaseModel {
 //                baseApi.run(entry.getKey(), entry.getValue());
 //            });
             baseApi.run(step.get("api").toString(), step.get("action").toString());
+            if(step.get("actual")!=null){
+                assertAll(()->{
+                    if(step.get("matcher").equals("eq")) {
+                        assertThat(step.get("actual"), equalTo(step.get("expect")));
+                    }
+                });
+            }
         });
     }
 }
